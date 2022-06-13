@@ -23,7 +23,7 @@ function App() {
       <h1>Steps to Easily Download All Your Memories</h1>
       <div className='steps2'>
         <ul>
-          <li>Log into your account on <a href='https://accounts.snapchat.com/accounts/login?continue=%2Faccounts%2Fwelcome'>accounts.snapchat.com</a></li>
+          <li>Log into your account on <a href="https://accounts.snapchat.com/accounts/login?continue=%2Faccounts%2Fwelcome" target="_blank" rel="noopener noreferrer">accounts.snapchat.com</a></li>
           <li>Click <b>'My Data'</b></li>
           <li>Click <b>'Submit Request'</b> at the bottom of the page</li>
           <li>Enter a valid email address and we'll send you an email with a link once your data is ready to download</li>

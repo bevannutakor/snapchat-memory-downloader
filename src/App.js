@@ -7,6 +7,8 @@ function App() {
       <div className="logowrapper">
         <img src={logo} className="App-logo" alt="logo" />
       </div> 
+      <h2>Want to download all your Snapchat memories with ease? You're in the right place! <br /> This site allows you to download a copy of your memories to your computer all at once.</h2>
+      <p>Don't worry we do not store any of your data!</p>
       <h1>Steps to Get Your Data From Snapchat</h1>
       <div className='steps'>
         <ul>

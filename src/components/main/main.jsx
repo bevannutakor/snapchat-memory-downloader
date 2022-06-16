@@ -33,6 +33,17 @@ function Main() {
       <button className='upload'>
         Upload Files Here
       </button>
+
+      <label>
+      <div className='upload'>
+          {/*make this look nice phillip*/}
+          <form action="/uploadForm">
+            <input type="file" id="myFile" name="memories"/>
+            <input type="submit"/>
+          </form>
+      </div>
+      </label>
+
       </div>
       </div>
   )

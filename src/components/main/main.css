@@ -1,0 +1,55 @@
+.main {
+    display: block;
+    justify-content: center;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.steps {
+    font-size: calc(6px + 1.5vmin);
+    color: rgb(0, 0, 0);
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+  }
+
+.steps2 {
+    font-size: calc(6px + 1.5vmin);
+    color: rgb(0, 0, 0);
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+  }
+  
+  ul {
+    list-style: none;
+    line-height: 2.5rem;
+  }
+  
+  h1 {
+    font-size: calc(13px + 2vmin);
+    margin-top: 5rem;
+  }
+
+  .upload {
+    margin-bottom: 3rem;
+  }
+
+  button {
+    border-radius: 20px;
+    height: 40px;
+    width: 150px;
+    background-color: transparent;
+    border: 3px solid;
+    cursor: pointer;
+}
+
+.app {
+  padding: 0.5rem 3.5rem;
+  overflow: hidden;
+  color: black;    
+}
+
+@media screen and (max-width: 480px) {
+.app {
+  padding: 0.5rem 1rem;
+}
+}

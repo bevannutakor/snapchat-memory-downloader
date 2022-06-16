@@ -1,0 +1,15 @@
+.footer {
+    height: 10rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(69, 67, 67);
+    display: flex;
+  }
+
+.stuff {
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: calc(6px + 1vmin);
+}

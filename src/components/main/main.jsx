@@ -1,7 +1,20 @@
 import React from 'react'
+import axios from 'axios';
 import './main.css'
 
 function Main() {
+  const onSubmitFile = (e) => {
+    e.preventDefault();
+    var formData = new FormData();
+    var fileData = document.querySelector('#myFile');
+    formData.append("memories", fileData.files[0]);
+    axios.post('http://localhost:4000/upload_file', formData)
+        .then((res) => {
+          console.log(res.data)
+      }).catch((error) => {
+          console.log(error)
+      });
+  }
   return (
     <div className="app">
     <div className='main'>
@@ -37,7 +50,7 @@ function Main() {
       <label>
       <div className='upload'>
           {/*make this look nice phillip*/}
-          <form action="/uploadForm">
+          <form enctype="multipart/form-data" onSubmit={onSubmitFile}>
             <input type="file" id="myFile" name="memories"/>
             <input type="submit"/>
           </form>

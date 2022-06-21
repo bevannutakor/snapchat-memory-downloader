@@ -1,49 +1,36 @@
-const fs = require("fs");
-const path = require('path');
 const axios = require('axios');
+const express = require('express');
+const multer = require('multer');
+const upload = multer({ storage: multer.memoryStorage() });
+const app = express();
 
-//When getting the file
+const extractAwsLink = require('./functions/extractAwsLink');
+const createFileName = require('./functions/createFileName');
 
-const jsonFile = './memories_history.json';
+//temp
+const port = 4000;
 
-const downloads = require(jsonFile)["Saved Media"];
 
-function addLinkToFile(jsonData){
-    fs.writeFile(__dirname + '/test.json', JSON.stringify(jsonData), err => {
-        if (err) throw err
-        else console.log('nice');
-      })
-}
-//Extract aws link from app.snapchat.com
-async function extractAwsLink(){
-    let linksArray = [];
-    axios.defaults.timeout = 10000;
-    await Promise.all(
-        downloads.map(async (memory, index) => {
-            await axios.post(memory['Download Link'])
-                .then(res => {
-                    linksArray.push({'awsLink': res.data});
-                })
-                .catch(err => {
-                    console.error(err);
-                })
-        })
-    )
-    addLinkToFile(linksArray);
-}
+app.post('/upload_file', upload.single("memories"), (req, res) => {
+    if(req.file.originalname != 'memories_history.json'){
+        res.status(400);
+    } else {
+        const jsonString = String(req.file.buffer);
+        const jsonFile = JSON.parse(jsonString);
+        const downloads = jsonFile["Saved Media"];
+        
+        extractAwsLink(downloads);
+        createFileName(downloads);
 
-function createFileName(download, fileTime){
-    let fileName = fileTime
-    if(download["Media Type"].toLowerCase() == "image" || download["Media Type"].toLowerCase() == "photo"){
-        fileName += ".jpg"
-    } else if(download["Media Type"].toLowerCase() == "video"){
-        fileName += ".mp4"
     }
-    return fileName;
-}
+    
+})
 
-async function main(){
-    //loop through each aws link, and create a new file and add it to downloads
-    //then send it to the user
-    return null;
-}
+app.get('/', (req, res) => {
+    //When user downloads file
+})
+
+
+app.listen(port, () => {
+    console.log(`listening on ${port}`);
+})

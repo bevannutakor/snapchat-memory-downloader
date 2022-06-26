@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer');
-//const path = require('path');
+const cors = require('cors');
 const zipLocal = require('zip-local');
 const upload = multer({ storage: multer.memoryStorage() });
 const app = express();
@@ -11,10 +11,12 @@ const downloadLink = require('./functions/downloadLink');
 
 const port = 4000;
 
+app.use(cors());
+
 //trying to save as little files as possible to server
 app.all('/upload_file', upload.single("memories"), (req, res) => {
     if(req.file.originalname != 'memories_history.json'){
-        res.status(400);
+        res.sendStatus(400);
     } else {
         const jsonString = String(req.file.buffer);
         const jsonFile = JSON.parse(jsonString);
@@ -26,17 +28,20 @@ app.all('/upload_file', upload.single("memories"), (req, res) => {
             try{
                 extractedLinks = await extractAwsLink(downloads);
                 downloadLink(extractedLinks);
-                //problem zip is always empty
-                //await zipLocal.sync.zip('./functions/Snapmemories').save("my-memories.zip");
+                res.sendStatus(200);
             } catch(err){
                 console.log(err);
             }
         }
         main();
+        //res.status(200);
     }
 })
 
-
+app.get('/download', (req, res) => {
+    zipLocal.sync.zip('./functions/Snapmemories').save("my-memories.zip");
+    res.download(__dirname + '/my-memories.zip');
+})
 
 app.listen(port, () => {
     console.log(`listening on ${port}`);

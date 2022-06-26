@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import './main.css'
 
 function Main() {
+  const [complete, setComplete] = useState(false);
+
   const onSubmitFile = (e) => {
     e.preventDefault();
     var formData = new FormData();
@@ -10,11 +12,15 @@ function Main() {
     formData.append("memories", fileData.files[0]);
     axios.post('http://localhost:4000/upload_file', formData)
         .then((res) => {
-          console.log(res.data)
+          console.log(res.status)
+          if(res.status === 200){
+            setComplete(true);
+          }
       }).catch((error) => {
-          console.log(error)
+          console.log(error.response)
       });
   }
+
   return (
     <div className="app">
     <div className='main'>
@@ -57,6 +63,12 @@ function Main() {
       </div>
       </label>
 
+      
+      {complete ? (
+        <a href="http://localhost:4000/download">Download</a>
+      ) : (
+        <a class="hidden"href="#">Not shown in client</a>
+      )}
       </div>
       </div>
   )

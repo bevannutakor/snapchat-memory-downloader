@@ -48,6 +48,10 @@
   color: black;    
 }
 
+.hidden{
+  display: none;
+}
+
 @media screen and (max-width: 480px) {
 .app {
   padding: 0.5rem 1rem;

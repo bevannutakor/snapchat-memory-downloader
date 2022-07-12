@@ -21,6 +21,16 @@ function Main() {
       });
   }
 
+  const downloadFile = (e) => {
+    e.preventDefault();
+    axios.get(`${process.env.REACT_APP_BASE_URL}download`)
+      .then((res) => {
+        console.log(res.status);
+      }).catch((error) => {
+        console.log(error.response);
+      })
+  }
+
   return (
     <div className="app">
     <div className='main'>
@@ -65,7 +75,7 @@ function Main() {
 
       
       {complete ? (
-        <a href={`${process.env.REACT_APP_BASE_URL}download`}>Download</a>
+        <button onClick={downloadFile}>Download</button>
       ) : (
         <a class="hidden"href="#">Not shown in client</a>
       )}

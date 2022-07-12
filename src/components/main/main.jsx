@@ -10,7 +10,7 @@ function Main() {
     var formData = new FormData();
     var fileData = document.querySelector('#myFile');
     formData.append("memories", fileData.files[0]);
-    axios.post(`https://obscure-beach-28630.herokuapp.com/`, formData)
+    axios.post(`${process.env.REACT_APP_BASE_URL}`, formData)
         .then((res) => {
           console.log(res.status)
           if(res.status === 200){
@@ -65,7 +65,7 @@ function Main() {
 
       
       {complete ? (
-        <a href="http://localhost:4000/download">Download</a>
+        <a href={`${process.env.REACT_APP_BASE_URL}/download`}>Download</a>
       ) : (
         <a class="hidden"href="#">Not shown in client</a>
       )}

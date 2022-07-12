@@ -1,6 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import axios from 'axios';
 import './main.css'
+
+require('dotenv').config();
 
 function Main() {
   const [complete, setComplete] = useState(false);
@@ -10,7 +12,7 @@ function Main() {
     var formData = new FormData();
     var fileData = document.querySelector('#myFile');
     formData.append("memories", fileData.files[0]);
-    axios.post('http://localhost:4000/upload_file', formData)
+    axios.post(`${process.env.BASE_URL}/upload_file`, formData)
         .then((res) => {
           console.log(res.status)
           if(res.status === 200){

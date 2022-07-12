@@ -34,7 +34,6 @@ app.all('/upload_file', upload.single("memories"), (req, res) => {
             }
         }
         main();
-        //res.status(200);
     }
 })
 

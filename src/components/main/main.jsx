@@ -65,7 +65,7 @@ function Main() {
 
       
       {complete ? (
-        <a href={`${process.env.REACT_APP_BASE_URL}/download`}>Download</a>
+        <a href={`${process.env.REACT_APP_BASE_URL}download`}>Download</a>
       ) : (
         <a class="hidden"href="#">Not shown in client</a>
       )}

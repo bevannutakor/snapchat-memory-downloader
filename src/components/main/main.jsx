@@ -2,8 +2,6 @@ import React, {useState} from 'react'
 import axios from 'axios';
 import './main.css'
 
-require('dotenv').config();
-
 function Main() {
   const [complete, setComplete] = useState(false);
 

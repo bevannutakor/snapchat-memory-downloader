@@ -10,7 +10,7 @@ function Main() {
     var formData = new FormData();
     var fileData = document.querySelector('#myFile');
     formData.append("memories", fileData.files[0]);
-    axios.post(`${process.env.REACT_APP_BASE_URL}/upload_file`, formData)
+    axios.post(`${process.env.REACT_APP_BASE_URL}`, formData)
         .then((res) => {
           console.log(res.status)
           if(res.status === 200){

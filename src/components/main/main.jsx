@@ -7,7 +7,6 @@ function Main() {
 
   const onSubmitFile = (e) => {
     e.preventDefault();
-    console.log(process.env.REACT_APP_BASE_URL);
     var formData = new FormData();
     var fileData = document.querySelector('#myFile');
     formData.append("memories", fileData.files[0]);

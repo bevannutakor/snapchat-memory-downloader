@@ -21,7 +21,7 @@ function Main() {
       });
   }
 
-  const downloadFile = (e) => {
+  {/*const downloadFile = (e) => {
     e.preventDefault();
     axios.get(`${process.env.REACT_APP_BASE_URL}download`)
       .then((res) => {
@@ -29,7 +29,7 @@ function Main() {
       }).catch((error) => {
         console.log(error.response);
       })
-  }
+  }*/}
 
   return (
     <div className="app">

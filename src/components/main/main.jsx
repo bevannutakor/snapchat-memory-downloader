@@ -65,7 +65,6 @@ function Main() {
 
       <label>
       <div className='upload'>
-          {/*make this look nice phillip*/}
           <form enctype="multipart/form-data" onSubmit={onSubmitFile}>
             <input type="file" id="myFile" name="memories"/>
             <input type="submit"/>

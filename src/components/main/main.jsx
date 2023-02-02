@@ -10,7 +10,7 @@ function Main() {
     var formData = new FormData();
     var fileData = document.querySelector('#myFile');
     formData.append("memories", fileData.files[0]);
-    axios.post(`${process.env.REACT_APP_BASE_URL}`, formData)
+    axios.post(`https://snapchat-memory-server.uc.r.appspot.com/ `, formData)
         .then((res) => {
           console.log(res.status)
           if(res.status === 200){
@@ -74,7 +74,7 @@ function Main() {
 
       
       {complete ? (
-        <a href={`${process.env.REACT_APP_BASE_URL}download`}>Download</a>
+        <a href={`https://snapchat-memory-server.uc.r.appspot.com/download`}>Download</a>
       ) : (
         <a class="hidden"href="#">Not shown in client</a>
       )}

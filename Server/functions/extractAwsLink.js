@@ -1,5 +1,7 @@
 const axios = require('axios');
 
+const createFileName = require('./createFileName');
+
 async function extractAwsLink(downloads){
     axios.defaults.timeout = 10000;
     let linksArray = [];
@@ -16,7 +18,6 @@ async function extractAwsLink(downloads){
         })
     )
 
-    //addtoJsonFile(linksArray);
     return await linksArray;
 }
 
